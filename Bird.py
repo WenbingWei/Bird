@@ -5,6 +5,21 @@ import numpy as np
 img = Image.open("/home3/weiwb/code/Multi-Channel-Model-master/bird.jfif")
 s = np.array(img.convert('L'))
 
+
+def seed_torch(seed=123):
+    os.environ['PYTHONHASHSEED'] = str(seed)
+
+    # random.seed(seed)
+    # np.random.seed(seed)
+
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+
+
+
 # plt.imshow(s, cmap='gray')
 # plt.imsave("Gray_bird.jpg", s)
 # pylab.show()
